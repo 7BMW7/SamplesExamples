@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+
+class Account
+{
+    public string Username { get; set; }
+    public int ReportedIncidents { get; set; }
+
+    public Account(string username, int reportedIncidents)
+    {
+        Username = username;
+        ReportedIncidents = reportedIncidents;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<Account> accounts = new List<Account>
+        {
+            new Account("user1", 5),
+            new Account("user2", 2),
+            new Account("user3", 10),
+            new Account("user4", 0),
+            new Account("user5", 7)
+        };
+
+        const int harmfulThreshold = 5;
+
+        foreach (var account in accounts)
+        {
+            if (account.ReportedIncidents > harmfulThreshold)
+            {
+                Console.WriteLine($"Account {account.Username} is harmful with {account.ReportedIncidents} reported incidents.");
+            }
+        }
+    }
+}
